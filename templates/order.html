@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}
+    Order {{ name }}
+{% endblock %}
+{% block content %}
+    {% if error != 0 %}
+    Error, Order not found<br>
+    Error code {{ error }}
+    {% else %}
+    <h1>Order {{ name }}</h1><br>
+    {{ description }}<br>
+    Parent Class: <a href="/class/{{ class_ }}">Class {{ class_ }}</a><br>
+    <h1>Families</h1>
+    <ul>
+        {% for family in families %}
+            <li><a href="/family/{{ family }}">Family {{ family }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}

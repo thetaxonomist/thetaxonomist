@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}
+    Family {{ name }}
+{% endblock %}
+{% block content %}
+    {% if error != 0 %}
+    Error, Family not found<br>
+    Error code {{ error }}
+    {% else %}
+    <h1>Family {{ name }}</h1><br>
+    {{ description }}<br>
+    Parent Order: <a href="/order/{{ order }}">Order {{ order }}</a><br>
+    <h1>Genera</h1>
+    <ul>
+        {% for genus in genera %}
+            <li><a href="/genus/{{ genus }}">Genus {{ genus }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}

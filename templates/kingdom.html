@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}
+    Kingdom {{ name }}
+{% endblock %}
+{% block content %}
+    {% if error != 0 %}
+    Error, Kingdom not found<br>
+    Error code {{ error }}
+    {% else %}
+    <h1>Kingdom {{ name }}</h1><br>
+    {{ description }}
+    <h1>Phyla</h1>
+    <ul>
+        {% for phylum in phylums %}
+            <li><a href="/phylum/{{ phylum }}">Phylum {{ phylum }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}

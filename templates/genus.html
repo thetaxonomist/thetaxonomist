@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}
+    Genus {{ name }}
+{% endblock %}
+{% block content %}
+    {% if error != 0 %}
+    Error, Genus not found<br>
+    Error code {{ error }}
+    {% else %}
+    <h1>Genus {{ name }}</h1><br>
+    {{ description }}<br>
+    Family: <a href="/family/{{ family }}">Family {{ family }}</a><br>
+    <h1>Species</h1>
+    <ul>
+        {% for specie in species %}
+            <li><a href="/species/{{ name }} {{ specie }}">{{ name }} {{ specie }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}
