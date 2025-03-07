@@ -1,0 +1,13 @@
+body {
+    font-family: Verdana, sans-serif;
+    background-color: #aaf;
+}
+
+a {
+    text-decoration: none;
+    color: #669;
+}
+
+a:hover {
+    color: #44a;
+}

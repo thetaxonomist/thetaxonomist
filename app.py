@@ -1,11 +1,11 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template
 import database as db
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return redirect("/kingdom/plantae")
+    return render_template("index.html", phylums=len(db.phylums), classes=len(db.classes), orders=len(db.orders), families=len(db.families), genera=len(db.genera), species=len(db.species))
 
 @app.route("/kingdom/<string:name>")
 def kingdom(name):
@@ -23,6 +23,7 @@ def kingdom(name):
         return render_template("kingdom.html", name=name, error=error)
 
     phylum_names = [i.name for i in kingdom.phylums]
+    phylum_names.sort()
     return render_template("kingdom.html", name=name, error=error, phylums=phylum_names, description=kingdom.description)
 
 @app.route("/phylum/<string:name>")
@@ -41,6 +42,7 @@ def phylum(name):
         return render_template("phylum.html", name=name, error=error)
 
     class_names = [i.name for i in phylum.classes]
+    class_names.sort()
     return render_template("phylum.html", name=name, error=error, classes=class_names, kingdom=phylum.kingdom.name, description=phylum.description)
 
 @app.route("/class/<string:name>")
@@ -59,6 +61,7 @@ def class_(name):
         return render_template("class.html", name=name, error=error)
 
     order_names = [i.name for i in class_.orders]
+    order_names.sort()
     return render_template("class.html", name=name, error=error, orders=order_names, phylum=class_.phylum.name, description=class_.description)
 
 @app.route("/order/<string:name>")
@@ -75,7 +78,9 @@ def order(name):
     
     if error != 0:
         return render_template("order.html", name=name, error=error)
+
     family_names = [i.name for i in order.families]
+    family_names.sort()
     return render_template("order.html", name=name, error=error, families=family_names, class_=order.class_.name, description=order.description)
 
 @app.route("/family/<string:name>")
@@ -92,7 +97,9 @@ def family(name):
     
     if error != 0:
         return render_template("family.html", name=name, error=error)
+
     genus_names = [i.name for i in family.genera]
+    genus_names.sort()
     return render_template("family.html", name=name, error=error, genera=genus_names, order=family.order.name, description=family.description)
 
 @app.route("/genus/<string:name>")
@@ -109,7 +116,9 @@ def genus(name):
     
     if error != 0:
         return render_template("genus.html", name=name, error=error)
+
     species_names = [i.name for i in genus.species]
+    species_names.sort()
     return render_template("genus.html", name=name, error=error, species=species_names, family=genus.family.name, description=genus.description)
 
 @app.route("/species/<string:gen> <string:name>")

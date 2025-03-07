@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+    <h1>theTaxologist v0.2</h1>
+    Hi, welcome to theTaxologist v0.2! Here you'll find all kinds of stuff about...<br>
+    <i>Taxonomy [botany]</i><br><br>
+    Start <a href="/kingdom/plantae">Here!</a><br>
+    We currently have...<br>
+    <ul>
+        <li>{{ phylums }} phyla</li>
+        <li>{{ classes }} classes</li>
+        <li>{{ orders }} orders</li>
+        <li>{{ families }} families</li>
+        <li>{{ genera }} genera</li>
+        <li>{{ species }} species</li>
+    </ul>
+{% endblock %}
