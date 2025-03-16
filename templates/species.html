@@ -9,7 +9,11 @@
     {% else %}
     <h1><i>{{ genus }} {{ name }}</i></h1><br>
     {{ description }}<br>
-    Genus: <a href="/genus/{{ genus }}">Genus {{ genus }}</a><br>
-    Family: <a href="/family/{{ family }}">Family {{ family }}</a><br>
+    <a href="/kingdom/{{ kingdom }}">Kingdom {{ kingdom }}</a>
+    <a href="/phylum/{{ phylum }}">Phylum {{ phylum }}</a>
+    <a href="/class/{{ class_ }}">Class {{ class_ }}</a>
+    <a href="/order/{{ order }}">Order {{ order }}</a>
+    <a href="/family/{{ family }}">Family {{ family }}</a><br>
+    <a href="/genus/{{ genus }}">Genus {{ genus }}</a><br>
     {% endif %}
 {% endblock %}

@@ -135,7 +135,7 @@ def species(gen, name):
     
     if error != 0:
         return render_template("species.html", name=name, error=error)
-    return render_template("species.html", name=name, error=error, genus=gen, family=specie.genus.family.name, description=specie.description)
+    return render_template("species.html", name=name, error=error, genus=gen, family=specie.genus.family.name, order=specie.genus.family.order.name, class_=specie.genus.family.order.class_.name, phylum=specie.genus.family.order.class_.phylum.name, kingdom=specie.genus.family.order.class_.phylum.kingdom.name, description=specie.description)
 
 
 if __name__ == "__main__":
