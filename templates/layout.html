@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="/static/styles.css">
+        <link rel="icon" href="/static/favicon.ico"
+    </head>
+    <body>
+        <header>
+            <!--semantic-->
+            <nav style="background-color:lightskyblue;height:10%;padding:15px;">
+                {% block nav %}
+                    <a href="/">Home</a>
+                {% endblock %}
+            </nav>
+        </header>
+        {% block content %}{% endblock %}<br>
+        <footer>
+            <div style="background-color:black;height:0.5px;width:100%;"><!--Divider--></div>
+            Powered by <a href="https://flask.palletsprojects.com/">Flask 3</a>
+            &#169; 2025 theTaxonomist Corporation<br>
+            &#169; 2025 @GreatCoder1000<br>
+        </footer>
+    </body>
+</html>

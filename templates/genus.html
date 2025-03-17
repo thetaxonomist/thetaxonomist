@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}
+    Genus {{ name }}
+{% endblock %}
+{% block nav %}
+    <a href="/">Home</a> &gt; <a href="/kingdom/{{ kingdom }}">Kingdom {{ kingdom }}</a> &gt; {% if kingdom == "plantae" %}<a href="/phylum/{{ phylum }}">Division {{ phylum }}</a>{% else %}<a href="/phylum/{{ phylum }}">Phylum {{ phylum }}</a>{% endif %} &gt; <a href="/class/{{ class_ }}">Class {{ class_ }}</a> &gt; <a href="/order/{{ order }}">Order {{ order }}</a> &gt; <a href="/family/{{ family }}">Family {{ family }}</a> &gt; <b><i>{{ name.title() }}</i></b>
+{% endblock %}
+{% block content %}
+    {% if error != 0 %}
+    Error, Genus not found<br>
+    Error code {{ error }}
+    {% else %}
+    <h1>Genus {{ name }}</h1><br>
+    {{ description }}<br>
+    <h1>Species</h1>
+    <ul>
+        {% for specie in species %}
+            <li><a href="/species/{{ name }}_{{ specie }}">{{ name }} {{ specie }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}

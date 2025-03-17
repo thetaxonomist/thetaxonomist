@@ -1,0 +1,2 @@
+cladogram_html = document.getElementById("cladogram_container").innerHTML.toString().replaceAll("&lt;", "<").replaceAll("&gt;", ">");
+document.getElementById("cladogram_container").innerHTML = cladogram_html;

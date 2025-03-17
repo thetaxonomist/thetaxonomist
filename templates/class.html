@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}
+    Class {{ name }}
+{% endblock %}
+{% block nav %}
+    <a href="/">Home</a> &gt; <a href="/kingdom/{{ kingdom }}">Kingdom {{ kingdom }}</a> &gt; {% if kingdom == "plantae" %}<a href="/phylum/{{ phylum }}">Division {{ phylum }}</a>{% else %}<a href="/phylum/{{ phylum }}">Phylum {{ phylum }}</a>{% endif %} &gt; <b>Class {{ name }}</b>
+{% endblock %}
+{% block content %}
+    {% if error != 0 %}
+    Error, Class not found<br>
+    Error code {{ error }}
+    {% else %}
+    <h1>Class {{ name }}</h1><br>
+    {{ description }}<br>
+    <h1>Orders</h1>
+    <ul>
+        {% for order in orders %}
+            <li><a href="/order/{{ order }}">Order {{ order }}</a></li>
+        {% endfor %}
+    </ul>
+    {% if cladogram != '' %}
+    <h1>Cladogram</h1>
+    <div id="cladogram_container">{{ cladogram }}</div>
+            <script src="/static/cladogram.js"></script>
+{% endif %}
+    {% endif %}
+{% endblock %}

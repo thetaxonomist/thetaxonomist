@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}
+    Phylum {{ name }}
+{% endblock %}
+{% block nav %}
+    <a href="/">Home</a> &gt; <a href="/kingdom/{{ kingdom }}">Kingdom {{ kingdom }}</a> &gt; <b>{% if kingdom == "plantae" %}Division{% else %}Phylum{% endif %} {{ name }}</b>
+{% endblock %}
+{% block content %}
+    {% if error != 0 %}
+        Error, Phylum not found<br>
+        Error code {{ error }}
+    {% else %}
+    {% if kingdom == "plantae" %}
+    <h1>Division {{ name }}</h1><br>
+    {% else %}
+    <h1>Phylum {{ name }}</h1><br>
+    {% endif %}
+    {{ description }}<br>
+    <h1>Classes</h1>
+    <ul>
+        {% for class_ in classes %}
+            <li><a href="/class/{{ class_ }}">Class {{ class_ }}</a></li>
+        {% endfor %}
+    </ul>
+    {% if cladogram != '' %}
+    <h1>Cladogram</h1>
+    <div id="cladogram_container">{{ cladogram }}</div>
+            <script src="/static/cladogram.js"></script>
+{% endif %}
+    {% endif %}
+{% endblock %}

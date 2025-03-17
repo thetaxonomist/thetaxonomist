@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}
+    Order {{ name }}
+{% endblock %}
+{% block nav %}
+    <a href="/">Home</a> &gt; <a href="/kingdom/{{ kingdom }}">Kingdom {{ kingdom }}</a> &gt; {% if kingdom == "plantae" %}<a href="/phylum/{{ phylum }}">Division {{ phylum }}</a>{% else %}<a href="/phylum/{{ phylum }}">Phylum {{ phylum }}</a>{% endif %} &gt; <a href="/class/{{ class_ }}">Class {{ class_ }}</a> &gt; <b>Order {{ name }}</b>
+{% endblock %}
+{% block content %}
+    {% if error != 0 %}
+    Error, Order not found<br>
+    Error code {{ error }}
+    {% else %}
+    <h1>Order {{ name }}</h1><br>
+    {{ description }}<br>
+    <h1>Families</h1>
+    <ul>
+        {% for family in families %}
+            <li><a href="/family/{{ family }}">Family {{ family }}</a></li>
+        {% endfor %}
+    </ul>
+    {% if cladogram != '' %}
+    <h1>Cladogram</h1>
+    <div id="cladogram_container">{{ cladogram }}</div>
+            <script src="/static/cladogram.js"></script>
+{% endif %}
+    {% endif %}
+{% endblock %}
