@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import database as db
+from math import floor
 
 # TODO: Eliminate all duplication in the module
 
@@ -9,7 +10,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html", phylums=len(db.phylums), classes=len(db.classes), orders=len(db.orders), families=len(db.families), genera=len(db.genera), species=len(db.species))
+    phylums = len(db.phylums)
+    classes = len(db.classes)
+    species = len(db.species)
+    return render_template("index.html", phylums=phylums, phylums_percentage=floor((int(phylums) / 14) * 100), classes=classes, classes_percentage=floor((int(classes) / 36) * 100), orders=len(db.orders), families=len(db.families), genera=len(db.genera), species=len(db.species), species_percentage=floor((int(species) / 400000) * 100))
 
 @app.route("/kingdom/<string:name>")
 def kingdom(name):

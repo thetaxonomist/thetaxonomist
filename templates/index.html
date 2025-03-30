@@ -16,11 +16,11 @@
     Which in turn are divided into the genus (pl. genera), which are divided into species.<br>
     We currently have...<br>
     <ul>
-        <li>{{ phylums }} of 14 extant phyla or {{ floor((int(phylums) / 14) * 100) }}%</li>
-        <li>{{ classes }} of 36 extant classes or {{ floor((int(classes) / 36) * 100) }}%</li>
+        <li>{{ phylums }} of 14 extant phyla or {{ phylums_percentage }}%</li>
+        <li>{{ classes }} of 36 extant classes or {{ classes_percentage }}%</li>
         <li>{{ orders }} orders</li>
         <li>{{ families }} families</li>
         <li>{{ genera }} genera</li>
-        <li>{{ species }} of about 400,000 described species or about {{ floor((int(species) / 400000) * 100) }}%</li>
+        <li>{{ species }} of about 400,000 described species or about {{ species_percentage }}%</li>
     </ul>
 {% endblock %}
