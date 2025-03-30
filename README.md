@@ -1,7 +1,7 @@
 # theTaxonomist
 theTaxonomist is a project where all taxonomy is collected, especially for plants.
 
-== Usage ==
+# Usage
 
 Run `flask run` and the app should be running on a development server hosted on `127.0.0.1:5000`.
 
